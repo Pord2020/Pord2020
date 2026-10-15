@@ -10,7 +10,7 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "node --import tsx scripts/start.ts",
-    "check": "tsc --noEmit",
+    "check": "next typegen && tsc --noEmit --incremental false",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "db:migrate": "node --import tsx scripts/migrate.ts",

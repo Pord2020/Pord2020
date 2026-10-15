@@ -101,7 +101,7 @@ test('a founder funds a study, accepts a tester, and the tester records real wor
     .getByLabel('Why would you be a good fit?', { exact: true })
     .fill('I journal daily and can give detailed feedback.');
   await tester.getByRole('button', { name: 'Apply to study', exact: true }).click();
-  await expect(tester.getByText('Application sent.', { exact: false })).toBeVisible();
+  await expect(tester.getByRole('dialog').getByText('Application sent.', { exact: false })).toBeVisible();
   await tester.getByRole('button', { name: 'Close / Cerrar', exact: true }).click();
   await page.reload();
   await page

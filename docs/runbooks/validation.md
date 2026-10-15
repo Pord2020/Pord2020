@@ -32,3 +32,9 @@ The clock is injected into internal services for tests only; there is no browser
 PGlite executes real PostgreSQL SQL and constraints, but it is not the remote Railway PostgreSQL instance. The production `pg` transport and Railway deployment still need validation against the provisioned database after Railway authentication. Provider tests validate the implemented contracts with fake HTTP responses; real Mercado Pago signatures/receipts and PayPal Payouts access remain unverified until credentials and network access are supplied. Google OIDC has not been tested against a real configured client.
 
 Automated WCAG checks are scoped to the rendered discovery pages. They complement screenshot review and keyboard checks; they do not prove that every possible flow is accessible. Keep test counts, failing checks, and unexecuted checks distinct in handoffs.
+
+## Recorded local result · 2026-10-15
+
+A clean frozen dependency installation, repeated migrations, optimized production build, and strict TypeScript checks passed. The final domain/provider/database suite completed 25 tests. The final browser run completed all 8 tests across desktop/mobile, including English/Spanish discovery and automated WCAG AA checks. Two direct production-entry lifecycle cycles verified database/page readiness, graceful shutdown, released ports, and restart with retained database state. A fresh type-generation/check was also exercised without the production `.next` output; the check command generates route types and disables stale incremental diagnostics for deterministic CI. Production dependency advisory checks reported zero vulnerabilities at the time of the run.
+
+The GitHub CI workflow is saved with verified official action commit pins; a hosted CI result was not observed from this cloud task. Railway deployment, real Google OIDC, Mercado Pago merchant receipts and real PayPal Payouts remain unverified. Provider-contract tests use controlled HTTP responses.
