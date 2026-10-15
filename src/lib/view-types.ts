@@ -1,0 +1,40 @@
+import type { Actor } from './services/auth';
+import type { TesterProfile } from './domain/schemas';
+import type { Study } from './services/studies';
+export type StudyView = Omit<Study, 'created_at'> & { created_at: string };
+export type ParticipationView = {
+  id: string;
+  study_id: string;
+  status: string;
+  started_at: string | null;
+  submitted_at: string | null;
+  review_note: string | null;
+  title: string;
+  app_name: string;
+  platform: string;
+  reward_cents: number;
+  duration_days: number;
+  check_in_count: number;
+  completed_tasks: number;
+  task_count: number;
+};
+export type RewardView = {
+  id: string;
+  amount_cents: number;
+  status: string;
+  app_mode: string;
+  created_at: string;
+  paid_at: string | null;
+  app_name: string;
+  title: string;
+};
+export type WalletView = { rewards: RewardView[]; pendingCents: number; paidCents: number };
+export type DashboardView = {
+  actor: Actor;
+  capabilities: { mode: string; google: boolean; livePayments: boolean };
+  studies: StudyView[];
+  stats: Record<string, number>;
+  profile?: TesterProfile | null;
+  participations?: ParticipationView[];
+  wallet?: WalletView;
+};
